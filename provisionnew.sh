@@ -37,8 +37,8 @@ then
     #make www-data (Nginx user)
     sudo chown www-data:www-data /var/www/ -R
     echo
-    echo -e "\033[33mnginx webserver installed\e[0m"   
-    echo -e $nextcmd
+    echo "\033[33mnginx webserver installed\e[0m"   
+    echo $nextcmd
     sleep 3s
 fi
 
@@ -50,8 +50,8 @@ then
     #secure mysql install
     sudo mysql_secure_installation
     echo
-    echo -e "\033[33mmysql-server installed\e[0m"   
-    echo -e $nextcmd
+    echo "\033[33mmysql-server installed\e[0m"   
+    echo $nextcmd
     sleep 3s
 fi
 
