@@ -1,14 +1,15 @@
 #!/bin/sh
 clear
 echo
-echo "*********************************************"
-echo "***  WELCOME TO AUTO GIT HOOK SETUP TOOL  ***"
-echo "*********************************************"
-echo 'LOADING...'
+echo
+echo -e "\033[34m*********************************************\e[0m"
+echo -e "\033[32m***  WELCOME TO AUTO GIT HOOK SETUP TOOL  ***\e[0m"
+echo -e "\033[34m*********************************************\e[0m"
+echo -e "\033[32mLOADING...\e[0m"
 sleep 3s
 #temp dir
 clear
-
+nextcmd="\033[32mloading next command ...\e[0m"
 read -p "Enter repo name: var/ "  repo
 gitrepo="/var/$repo"
 prod='/var/www'
@@ -16,8 +17,8 @@ sudo mkdir -p $gitrepo/tmp/
 sudo chgrp -R users $gitrepo/tmp/
 sudo chmod g+w $gitrepo/tmp/
 echo
-echo "default git hook repo:  $gitrepo craeted"
-echo 'loading next command ...'
+echo -e "\033[33mdefault git hook repo:  $gitrepo craeted\e[0m"
+echo -e $nextcmd
 sleep 2s
 
 #enter website name
@@ -28,8 +29,8 @@ sudo chgrp -R users $prod/$project
 sudo chmod g+w $prod/$project
 
 echo
-echo "default production dir: $prod/$project craeted"
-echo 'loading next command ...'
+echo -e "\033[33mdefault production dir: $prod/$project craeted\e[0m"
+echo -e $nextcmd
 sleep 2s
 
 #create git repo
@@ -40,8 +41,8 @@ sudo git init --bare
 
 
 echo
-echo "git repo initialized"
-echo 'loading next command ...'
+echo -e "\033[33mgit repo initialized\e[0m"
+echo -e $nextcmd
 sleep 2s
 
 #set permission for Git Repo
@@ -87,9 +88,19 @@ echo $STR6>> post-receive
 STR7='cd $TEMP'
 echo $STR7>> post-receive
 #install project packages
-#composer install
-#npm install
-# Replace the production directory
+read -p "run composer install (Press y|Y for Yes, any other key for No) : "  composercmd
+if [ $composercmd == 'y' ] || [ $composercmd == 'Y' ]
+then
+    echo 'composer install'>> post-receive
+    sleep 2s
+fi
+read -p "npm run install & prod (Press y|Y for Yes, any other key for No) : "  npmcmd
+if [ $npmcmd == 'y' ] || [ $npmcmd == 'Y' ]
+then
+    echo 'npm install'>> post-receive   
+    echo 'npm prod'>> post-receive   
+    sleep 2s
+fi
 # with the temporary directory
 STR8="cd /"
 echo $STR8>> post-receive
@@ -99,10 +110,10 @@ STR10='mv $TEMP $TARGET'
 echo $STR10>> post-receive
 
 echo
-echo "git hook post-receive created"
+echo -e "\033[33mgit hook post-receive created\e[0m"
 sleep 2s
 
 echo
-echo 'DONE'
-echo 'Deploy from the local computer'
-echo "git remote add deploy ssh://<your-name>@<your-ip>$gitrepo/git/$project.git/"
+echo -e "\033[32mDONE\e[0m"
+echo -e "\033[36mDeploy from the local computer\e[0m"
+echo -e "\033[36mgit remote add deploy ssh://<your-name>@<your-ip>$gitrepo/git/$project.git/\e[0m"
