@@ -13,7 +13,19 @@ echo
 echo "\033[33msystem update & ugraded\e[0m"
 echo $nextcmd
 sleep 3s
-#install python 
+
+#install git
+read -p "install git (Press y|Y for Yes, any other key for No) : "  gitcmd
+if [ $gitcmd = 'y' ] || [ $gitcmd = 'Y' ]
+then
+    sudo apt install git -y
+    echo
+    echo "\033[33mgit installed\e[0m"
+    echo $nextcmd
+    sleep 3s
+fi
+
+#install python
 read -p"install python3 (Press y|Y for Yes, any other key for No) : "  python3cmd
 if [ $python3cmd = 'y' ] || [ $python3cmd = 'Y' ]
 then
@@ -37,7 +49,7 @@ then
     #make www-data (Nginx user)
     sudo chown www-data:www-data /var/www/ -R
     echo
-    echo "\033[33mnginx webserver installed\e[0m"   
+    echo "\033[33mnginx webserver installed\e[0m"
     echo $nextcmd
     sleep 3s
 fi
@@ -50,7 +62,7 @@ then
     #secure mysql install
     sudo mysql_secure_installation
     echo
-    echo "\033[33mmysql-server installed\e[0m"   
+    echo "\033[33mmysql-server installed\e[0m"
     echo $nextcmd
     sleep 3s
 fi
@@ -63,7 +75,7 @@ then
     sudo systemctl start php7.2-fpm
     sudo systemctl enable php7.2-fpm
     echo
-    echo "\033[33mphp7.2  installed\e[0m" 
+    echo "\033[33mphp7.2  installed\e[0m"
     echo $nextcmd
     sleep 3s
 fi
@@ -132,6 +144,6 @@ npm -v
 composer --version
 laravel --version
 
-#TODO set yarn path 
+#TODO set yarn path
 #export PATH="$PATH:/opt/yarn-[version]/bin"
 #export PATH="$PATH:`yarn global bin`"
