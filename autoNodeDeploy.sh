@@ -99,16 +99,16 @@ pm2 restart app
 pm2 startup ubuntu
 
 #Setup ufw firewall
+sudo apt install ufw -y
 sudo ufw enable
 sudo ufw status
-sudo ufw allow ssh (Port 22)
-sudo ufw allow http (Port 80)
-sudo ufw allow https (Port 443)
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
 
-apt-get -y install xclip
-xclip -sel cli < nginxcofig.txt
-echo "\033[33mpaste location proxy details\e[0m"
-sleep 3s
+echo "\033[33mpaste node project location proxy details\e[0m"
+cat ./nginxcofig.txt
+sleep 5s
 sudo nano /etc/nginx/sites-available/default
 # Check NGINX config
 sudo nginx -t
