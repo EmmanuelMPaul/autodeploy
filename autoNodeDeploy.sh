@@ -110,8 +110,5 @@ echo "\033[33m****************************************************************\e
 sleep 10s
 sudo nano /etc/nginx/sites-available/default
 # Check NGINX config
-sudo nginx -t
-
-# Restart NGINX
-sudo service nginx restart
+sudo nginx -t && sudo service nginx restart
 
