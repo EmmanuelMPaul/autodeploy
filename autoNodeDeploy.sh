@@ -64,7 +64,7 @@ then
 fi
 
 #temp dir
-read -p "Enter git repo url: www/ "  repo
+read -p "Enter you project git repo url: www/ "  repo
 prod='/var/www'
 
 #enter website name
@@ -105,7 +105,7 @@ sudo ufw allow https
 
 echo "\033[33mconfigure nginx location proxy to you node project(check example below)\e[0m"
 echo "\033[33m************************Sample location proxy*******************\e[0m"
-cat /var/autodeploy/samlenginxcofig.txt
+cat /var/autodeploy/samplenginxcofig.txt
 echo "\033[33m****************************************************************\e[0m"
 sleep 10s
 sudo nano /etc/nginx/sites-available/default
