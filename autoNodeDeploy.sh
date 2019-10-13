@@ -79,11 +79,8 @@ sudo chmod g+w $prod/$project
 #Install dependencies and test app
 cd $prod/$project
 npm install
-read -p "Enter npm run command to start node server : "  startnpm
-npm $startnpm
+echo "\033[33mproject dependencies installed\e[0m"
 sleep 3s
-# stop app
-ctrl+C
 echo $nextcmd
 
 #Setup PM2 process manager to keep your app running
@@ -107,7 +104,7 @@ sudo ufw allow http
 sudo ufw allow https
 
 echo "\033[33mpaste node project location proxy details\e[0m"
-cat ./nginxcofig.txt
+cat /var/autodeploy/nginxcofig.txt
 sleep 5s
 sudo nano /etc/nginx/sites-available/default
 # Check NGINX config
