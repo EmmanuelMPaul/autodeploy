@@ -103,9 +103,11 @@ sudo ufw allow ssh
 sudo ufw allow http
 sudo ufw allow https
 
-echo "\033[33mpaste node project location proxy details\e[0m"
+echo "\033[33mcopy the setting below before nginx default config file opens\e[0m"
+echo "\033[33m****************************************************************\e[0m"
 cat /var/autodeploy/nginxcofig.txt
-sleep 5s
+echo "\033[33m****************************************************************\e[0m"
+sleep 10s
 sudo nano /etc/nginx/sites-available/default
 # Check NGINX config
 sudo nginx -t
