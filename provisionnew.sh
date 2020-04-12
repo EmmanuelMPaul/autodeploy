@@ -144,6 +144,15 @@ npm -v
 composer --version
 laravel --version
 
+# update apt
+nextcmd="\033[32mUpdate installed softwares ...\e[0m"
+sudo apt update
+sudo apt upgrade
+echo
+echo "\033[33msystem update & ugraded\e[0m"
+echo $nextcmd
+sleep 3s
+
 #TODO set yarn path
 #export PATH="$PATH:/opt/yarn-[version]/bin"
 #export PATH="$PATH:`yarn global bin`"
